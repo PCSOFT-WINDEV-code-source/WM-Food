@@ -1,0 +1,243 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FEN_APropos
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : FEN_APropos
+ identifier : 0x245a62d901b58afa
+ internal_properties : CAAAAAgAAAATfMeHwDTL5LuqFDzB0dBgdiOC09m3QHvRCbF5h/wCnxc4+BAhG5q4dtQudzNxbnJkdyLhjm5mt2ccfz8GFHU5bSkr3CaiX5DaQKV7bn1zJ23q4N9JDFNrqiV5GYXrPNOF4D1hmyrPrDVetuIrVwemn8C5NdTb4qVGnbamJFh3iovO0aRc3ElbFJ6K58OcOSqfRsCByhP2vBdDKe/tWB69J5OG0LU6MHFrxHOKP8XTA8sd9Z7+pH2joFnFh0aTTbl+UW2k1DxPn/JT/EvgzkENyajD+XMB5umMxhyydbx0RVBaXhIKBUP2xSFsbFyn3OLc2ZaeQq3tmM9UJpp1u3Z/JvFF4mxImAC+KKa/ZhcClc48Dgyzt7cp8ZdpvP70BipY4gq7JrS9IRFMF69LzXypp/P5RLU6ZsewGyXyZbbxeUL19i0enfs6Ap80QfAFXKAcdJxnFG28tImV/TT5qCIy4s3XrOJNAZpJur5JbgQ5lkYOGuFw2i4rp+4YQTT8qPziilWJY7SkAQA7OkodrJUZKHRvgRZAwvXX0I913bIivUrQ4ebtnt69FdrYP89Cq+k8HzvaOeHPwaimDrUJ0n7hVaJw/yOSDLqnET28vEll1SNcavri8vlu+GjoNWCk2Bg9zI506Th78880NNqnGBftdtJArVQ7IwD3JMHYX808RkqEWxLNCXWW1mncztID/MN0MxdT6Xjiy4/KLezsc3TrW0nQA8oDd/EkO82g4K12VvXTx8y5rLlYE3t1TBztRAHYsGjRBH9Y6867pXkbbKZr6xRWQPp29wwhOvI=
+ properties :
+  width : 320
+  height : 480
+ controls :
+  -
+    name : LIB_APropos
+    identifier : 0x245a63040213309b
+    internal_properties : CAAAAAgAAABgAb2RNfgl9Swa0qTYvgkYGCBvAxCu6mM7m1nhaPX6OlStzdJlIylL/gd4vMwGVffXfXP/b8nnQsr+DtxKk9B8Uw5E8ETBPEIkPGFPkeqVoZhdrHR5Xcn04ZjBNQAMbr+8aGRUwYAShrmeGacI0o1gXdO+OJ43xB63EgCyvPHnEU1UoXrY1CbkiMvhNIL3DbjgeRKbcKcjg1wzD1Yy5/hzwTgMNBiCojxib/LusFwBh3Z4al0HFb9BWGTlexyRSRArxV+FxQTazygMh6z6hNdZXT8bygtjDD1sg4wpJyLo6oLjK65qJ06fnC9I9kyjJq8f2zj8h1e7a/nII0y6Q2VyWkS7HWma/o92I+5200S6dwnNH/uRdgwgnLIkXfEjjHag0TVXG0HRbm6hnYCrNuk6UbnnSIXp52dJRF155ZtLDjmh1IP6PyzgiQ8BrOoe5r48TM891sxZTGFxsSNor+WnMjbEdF1jSigYsKjL+klnHJPmhUvjWGzoTWT/678GfDoh6jmy1S2cY8FyLHcuWvuoZ0MHFGWP4bF+HBHddtPJ/lplAwqiHHWI1INdS5W7DDDZ6+HBOEW6Em0jhFx/uVdXoFJsbkl0VLg0xvBkVQnqc75mdwDmOAHrvJNUK+v0tH0p6o84ESEhScT2rarlkQvqO7fMzhANcPn/PfqHxl/ma5Gz2pZKCCdJkg8X9qRTiI02mcgBYIcsXltyADJ/ydBymAhgOADcUF494ZCEGFGeKeUu1ePmCAA+53G/uh/Eb1y9WFuXPpX3DVrMWQloIAoMHfUabvCCF/jZBRwsBoPIyxz1UCA8TMPi8nJaBs+LH9SaMJi5prnPn6POTqKgcqgYDxbM10lhA5bYEu2KTq1CvSxP3INihDcS0MIbdohoJ9qoOFYDKj1Lxr8pceHtq16NkZkHqfPnhr9YbhBIkc1V0MxhL6i7LkF39o6ksHdzSYe1mAKCmJRj0PdLeF0dh6AKiSSlpIsLGwTcgZkpbMQbDZLEcNvvetLSW6WicK5HuVqySQffflZG6EM15sm4KenjFApDrWIO7CBCE6Mxv7LyztTTRw01ivtwAL9UuLvOhC+GD59iW+6JhiT0NT+ldDaV1raqRHuMhB6aBJI+wwobGhVmsUhwLJPyIbfIVxjYvbwqlrHM2TGbSD37z3lBGzl4KLXKadAY5Q/aXWa6B0hPEOO3UtuT3Fs=
+    properties :
+     x : 10
+     y : 73
+     width : 300
+     height : 397
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : IMG_Titre3
+    identifier : 0x2540e26414508311
+    internal_properties : CAAAAAgAAABuVO4u1gD9ADENzROA3tggKzfjPt/jqhAraeoYAqjOMS+2BrnTxmKvw1wRXcpp1WKlzea6S5uQgs2jXYK/hwhxpVKMp0Ijp61zVDPE6BBeQnrk3fwK4yO+li59UI8wZPQ8phPOnYsU44Yvxj244lmelukFURnc9sfGNgCNT/wkwatSKpsK7eMq/3JICgdcgTF/Y+LaQZiPr4Lfl+OHU7b5sRGKFkLONQJUowomO/S+P5K77iwbR76hgdUG/N6eNm/1RHinx3aSV9ym3LoE2pSW0LZnlJCiMZa5rO0kebNV6CccqfusECNTSWYitUxFKBXf+umN7VclrofRodMGlEZlJ+q56bylwZ6AP+UE2PX5pCjB9Gt12vylSXvvLIw4EA713JmbbCa6vXs9rOIpcZN392DF0Im4MOLVlAoj2myRCbpV9ZbT05ZYvOF8aPmfAHbCeu4AllMMC2XH7QcwDeXX2Wm8v+ZURdXx04p08SSlLJ66fmpvNCMRPkePPavyBsa0ghpCj/eyLCO+123+XczXpj1epb1U0yQQE+ZaLXGXtb1Rsn+dv0vqZKTazbKTBVVqH/R6TEkTNTkPHo13pKunbKa5iJ6Q57p7TSkXvy2r2dY/u3OIXcT5WyjdwcgxUbfMnpKUI8wLRVeoyxWxhzeiiHgO0gV3Hgw4sF/AFhowwagRiP4EQiZyeHia/Gq/W5kmu4h2eIMybq+TciIW2m1zZWwU6P4z0ZPrEUpBQptahK6UBs+3y1T1rjiiPjWGZxYL0xJ5jOb6lsWT+oarfikUtkOLponuDMVQ1XZ5+pBw8v94Zeu5LHete3+g7kwZxMYPKqhY/jPA9HVa/b0V8xLg26sbMYyXYlAA1UzTN2+LTR7OrjKHYdim5vnFmhwTaWIvUWsp1pWz1ujiGfcPILcJ91A2wThyU8Mi38AIlqxNY/CT5gY/9Idlfxgh3zHSC8vk7O+f6eIgdsaMRqQ0xXxaB/l7fnnWwb6lYpkMbVkts1jqkXnBCcVi3JaH55CdDMKCX5kU9gvb1U/if0YeOQcFdUq4AoSOSScdmrBtTLQJrX4Hm2GPCA==
+    properties :
+     x : 52
+     y : 34
+     width : 107
+     height : 25
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : IMG_WINDEVMobile3
+    identifier : 0x2540e26414548311
+    internal_properties : CAAAAAgAAAAZ1RkYP0xAS3hZjJT66dw1lfi+9zxJr/kEDobxlkuRuUjPw1Us6OBrNmRSVXDEVincUDfXS5mFkUSUF1Uj9xU2vDfbOnGSrbKa2b0TzWZDZxaOnrTcE7qJorhH5doMcCgGxM/xzc2YD/oPQ2LVVVmEEF1PWd2LvWQ5ak5ctZorwWpz8tjjk0/l98kSQRBM4qZfouiXZAwhsi4WkDiCGQxNNtNvOwy4GlkYfOmibmyLXovjmYAm/zSX+FUeCWAKxH2qZeyB7aHG+3BQFSZAtQAIShT043aJLgDADc7gS4mypD3/TtlPs/dhs/ys0GBpCb6zOJ/aj4C1G/OHK7MPksP++b7hix3k+f2mnj49B9B8IaZI1DbHhFrd8hq+ZYzaOTIaecq4mwgT9Q7a8buOdJEaeQWheLeA49WPnkGL77j6fIJHI/c05eLzhU2cdyJXUMcgc61I819q7OOMgidrovyzoVKs3J/R9bVa0zVWSu9/ummiZRFULw1ZA8DKdfGscWnyK3VT4OI+FNERJjfmHj354X0zOkAH2SWfWd89UcxWX6TZPaSsABCkebsNRzCZ3jEBmHKu0Gkpe8w9LgycJ/zLuqWuWxp/ueZlEfzTb5UWvUUIDxLJn7g8gEFJDUz6/TwW5czyqxYJDS6WlHSNxQZmbIJD5/97jL3KpXKgDTluoW77IDsWxBKkt5kdTX2iLAV5h4VrEl+2vAzLLyoY7b4GhhbHgP6H7zq5BJG3gAsyy3sy4rmvYaEgWtrvzX7dWhpvgMtTpPk7XGwO8V7/f2vYuOzHZxOJAa7flSAua5XchZwbGkSvGGXeI8OIcmxL6G/2lehShPncgJKuDJnBMNC1Uzb6
+    properties :
+     x : 248
+     y : 38
+     width : 56
+     height : 16
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes :
+      -
+        code : |1-
+         
+         NavigateurLanceAppli("http://www.pcsoft.fr/windevmobile/index.html")
+        type : 18
+  -
+    name : LIB_APropos1
+    identifier : 0x2540ecae1464b2a9
+    internal_properties : CAAAAAgAAABF81C7nUxriYIKNNkpPJQqF5fDnQMaz9eHHArwmTf7W/uUQy24ui+debjduOuJxLCr10z66finh1sN/sCZrJWxfcFmlAJ+cmV7/FLg/fczAUkdQPMU8b4u9dfTG22PHaW341XsmK6Qve8V9Pn7Tn8VSOmhzJSVt2VPi0N2I0Dc3sPUTeqhHCJNJMuC3xnr3FwsXW4cwgUUF1O7kHX6SYh1+jfOHsuKdF1i/LFVcuxxIZ/GkjW+wvv7MT5/T0P+jEkEUqdhLzBcpAlfcVTAgbL2zRqgyMgE6+duMyWBJhs2EF39w2k8xwGUPCOHB8aDs5vyf99+agYS1xK/a3lr9hF64kAyV/78foX2D4UQ1M+Oo4r79UxL6j2hSalo6hexDuavfBckKr9oYcZJ0BpQlkazRGdk9Nuk5vz6ATRUClwbfUzHjvta9fZWBoW5Mu2AYoAbGNIumG6Wg0Eirwu96tFrW9Pj699p/GBwO1ckulYI3uMukLyi2X1gjwMEQFVcQ8ZVjosfwS+QrNTGDEggDZtb3onJmoAf
+    properties :
+     x : 10
+     y : 73
+     width : 300
+     height : 34
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : BTN_SansNom1
+    identifier : 0x2540ee8b1547fa34
+    internal_properties : CAAAAAgAAADTUoqhTdhCGz6GqRWhFXi8ceC9bWmrX8+BpFjhYticVC21V0hceuv8p8lE43DFe71U6PlFBntw565TUFjIhwmfGm9aBYlO45dD0SsG5koSM9zDzU3Z4tiNWyuRFuw32Y31TZNVW09uSePgkRs50DIE1o9ezxwFNoLn5z5+jWzwTVf5XWVBrnrU6fNyJ6L1+MVMJFmclii2Azsga+A2aB1POeYtjY6GgYhVvHk+8ncDT7gMcNcuOS1S09Mmv3vH6yP67/BP1OdhMcklG2GIew5E2VgHtCVQao+weVk3+LiIGPJOd5+P+w6ty1uUX9gvX7lH+zqtVWBBY3rqOaeW4b0lGPvYtncfapNqbOKcvd/GPMRrNGYbpz/OSPescL38oLPrn+Uoal730sFX4xZJmf3n2r+34J6CkPY6TS6HEsOpKbtUSY0S3um6xQTLuk6lplH9pELDmze0oJwsnqKOYrGsPnKktxuI7YZDJaYDqKq1JqAdGfcNH4lyOSPX/+/b6Sr8iLHIhiFEHIlE/ac5OfUTjn3IcXy/QBUASEOOu4Bu3Nf2XA0HTbvjYXQobAd8TpT56UEQmbTB7hJQdpJhVUaNs+TGXP3FMxwhs797BoEKNolwbv562gziagP3yeSVSO8FJSESphuXeWEAf1nExwqdaoGE/sDdOtzWhfY3WZOHmu2QA9VRPRcammEBQGmAUiZjogO9X1unqWQyt4Wss4XYAaSkX7vZlSxsSoe0XmQPc+KpYDpghALf7rLpJ7rDkL7tmkgXMmY0z9eOSjda7JWfzg2SwBB5/19m/oj0fZ6LFr6S7LtuT4Jb2jGumOaEdgL5RIXW/EFaWe25GsF9Oo/fbONo9tC9UIht1CgyWZtTvqO2441D0CLxPYSv0TJGGAqFwcn/1jhdtmAbGx6XFq1Zz68+ubM41Fk=
+    properties :
+     x : 11
+     y : 30
+     width : 32
+     height : 32
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1-
+         
+         ferme()
+        type : 18
+      -
+        type : 161
+        enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x29f8144500a4e5ba
+  internal_properties : CAAAAAgAAAByVTsSr3/syDi1St8xf8fgHxdhV816G1q5zyODGkOm1npuSkYo5g/jXWoWFFK2H3oUBZtHLsT5rfRCnVFNNS0taWG501M84VhyiY2gqfWqbb5TaLNBc7/5X5PbRqVlZ5a3p7SznWjoHPbzt8FGrVw2pkxQ2AMTSCoEquPAoSRRZmCgf0llwPSIdkz+fkQsa3yCb/aARC1IuAmTNbEAkdknQHeBdhsRIWlMefD05RVbqvlMGzysSB4KUPZWTHHaQPB4ObHU/5KQ/VjN8jyQaoRgKuGxrJ5V23KTuMr/Zw==
+  options : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAACegQKw6w/1n4X0NCbNIxMmGkK1xNiIbDG6CqD20lbLW7fSt1O44lfhlxF03+gAYh/fDceuq7mOBqZp6Y6Zkp2dyMxjT05HOc+/4wuveKfjZMjpuYi6qSgNJlff
+ actionbar : {}
+ code_elements :
+  type_code : 1
+  p_codes :
+   -
+     code : |1+
+      PROCEDURE FEN_APropos()
+   -
+     code : |1-
+      
+      FenMobileAdapteTaille(LIB_APropos..Nom)
+      //Redimensionne()
+     type : 34
+   -
+     code : |1-
+      
+     type : 165
+   -
+     code : |1+
+      
+      
+     type : 177
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1+
+      
+      
+     type : 2
+   -
+     code : |1+
+      
+      
+     type : 11
+   -
+     code : |1+
+      
+      
+     type : 12
+   -
+     code : |1+
+      
+      
+     type : 17
+   -
+     code : |1-
+      
+     type : 13
+  procedures :
+   -
+     name : Redimensionne
+     procedure_id : 1466844435253474241
+     type_code : 14
+     code : |1+
+      // Résumé : Adapte la hauteur de la fenêtre en fonction de la taille du texte du libellé long
+      // Syntaxe :
+      // Redimensionne ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE Redimensionne()
+      
+      nHauteurTexte est un entier = CoordonnéeEditeurVersEcran(TexteHauteur(LIB_APropos,LIB_APropos))
+      SI (nHauteurTexte + LIB_APropos..Y) > MaFenêtre..Hauteur ALORS
+      	// le texte dépasse
+      	LIB_APropos..Hauteur = nHauteurTexte
+      	
+      	MaFenêtre..Hauteur = nHauteurTexte + LIB_APropos..Y + CoordonnéeEditeurVersEcran(16)
+      FIN
+     type : 458752
+   -
+     name : FenMobileAdapteTaille
+     procedure_id : 1474334299877867639
+     type_code : 14
+     code : |1+
+      // Résumé : Adapte la taille de la fenêtre au contenu du champ texte
+      // Syntaxe :
+      //FenMobileAdapteTaille (<sNomChamp> est chaîne)
+      //
+      // Paramètres :
+      //	sNomChamp (chaîne UNICODE) : Nom du champ contenant le texte long
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE FenMobileAdapteTaille(sNomChamp est une chaine)
+      
+      nMargeBas est un entier = CoordonnéeEditeurVersEcran(10)
+      nMargeSecurité est un entier = CoordonnéeEditeurVersEcran(20)
+      
+      si EnModeiOS() ALORS
+      	nMargeSecurité = CoordonnéeEditeurVersEcran(40)
+      FIN
+      
+      // Il faut vérifier l'existence du champ
+      SI ChampExiste(sNomChamp)=Faux ALORS
+      	RETOUR
+      FIN
+      
+      // Redimensionnement du champ
+      nHauteurTexte est un entier= TexteHauteur(sNomChamp,{sNomChamp,indChamp}..Libellé,tMultiligne) + nMargeSecurité
+      si {sNomChamp,indChamp}..x + nHauteurTexte + nMargeBas < MaFenêtre..HauteurInitiale ALORS
+      	nHauteurTexte = MaFenêtre..HauteurInitiale - nMargeBas - {sNomChamp,indChamp}..X
+      FIN
+      
+      {sNomChamp,indChamp}..Hauteur = nHauteurTexte
+      
+      // Redimensionnement de la fenêtre
+      nHauteurFenêtre est un entier
+      si {sNomChamp,indChamp}..X + nHauteurTexte + nMargeBas > MaFenêtre..HauteurInitiale ALORS
+      	//nHauteurFenêtre = {sNomChamp,indChamp}..X + nHauteurTexte + nMargeBas
+      	nHauteurFenêtre = MaFenêtre..HauteurInitiale + (nHauteurTexte - {sNomChamp,indChamp}..HauteurInitiale)
+      SINON
+      	nHauteurFenêtre = MaFenêtre..HauteurInitiale
+      FIN
+      
+      
+      MaFenêtre..HauteurUtile = nHauteurFenêtre
+      
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAAB6ragasMBWLfpsSyU19J6lAvYEqFWd1xYOjmHr1XHVZOVmechqLo1vKvfoAJhHeXL59P8BudVQfrBZ/U9vpjDz5RFibMKKm/84EA==
+resources :
+ string_res :
+  identifier : 0x1fc50c5c168474ed
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

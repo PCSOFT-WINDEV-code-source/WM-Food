@@ -1,0 +1,626 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_OpenFoodFacts
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x14ca0498003b79f0
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  type_code : 31
+  p_codes :
+   -
+     code : |1+
+      CONSTANT
+      	URL_OFF = "http://fr.openfoodfacts.org"
+      	
+      	FICHIER_INGREDIENTS = "detection.txt"
+      	
+      	PARAM_USERNAME = "USERNAME"
+      	PARAM_PWD = "PWD"
+      	
+      	NOMFEN_APropos = 1
+      	NOMFEN_Settings =  2
+      	NOMFEN_EditionProp = 4
+      	
+      	TAILLE_MAX_PHOTO = 1000
+      FIN
+      
+      // Configuration d'accès au serveur de production
+      gsURLOFF est une chaine = URL_OFF
+      gsLoginServerOFF est une chaine = ""
+      gsPasswordServerOFF est une chaine = ""
+      
+      // Configuration pour accéder au serveur de test de OpenFoodFacts
+      //gsURLOFF est une chaine= URL_OFF_TEST
+      //gsLoginServerOFF est une chaine= "off"
+      //gsPasswordServerOFF est une chaine= "off"
+      
+      // Compte utilisateur sur OpenFoodFacts (seulement utilisé en ajout)
+      gsUserName est une chaine = ChargeParamètre(PARAM_USERNAME,"")
+      gsPassword est une chaine = ChargeParamètre(PARAM_PWD,"")
+      
+      // Tableau des allergènes recherchés
+      gtabAllergenes est un tableau de chaines
+      
+      gnFilleOuverte est un entier
+      
+      // Structures retournées par le webservice
+      STINGREDIENTS est une structure
+      	sText est une chaîne
+      	id est une chaîne
+      	nRank est un entier
+      	nPercent est un entier
+      FIN
+      
+      STPRODUCT est une structure
+      	//	labels_hierarchy est un tableau de chaines
+      	//	_id est une chaine
+      	//	categories_hierarchy est un tableau de chaines
+      	//	checkers_tags est un tableau de chaines
+      	//	labels_tags est un tableau de chaines
+      	//	image_small_url est une chaine
+      	//	code est une chaine
+      	//	traces_tags est un tableau de chaînes
+      	//	lang est une chaine
+      	//	ingredients_that_may_be_from_palm_oil_tags est un tableau de chaînes
+      	generic_name est une chaine
+      	//	rev est un entier
+      	//	_keywords est un tableau de chaînes
+      	//	editors est un tableau de chaînes
+      	//	interface_version_created est une chaine
+      	//	emb_codes est une chaine
+      	//	max_imgid est une chaine
+      	//	additives_tags est un tableau de chaines
+      	//	emb_codes_orig est une chaine
+      	//	nutrient_levels_tags est un tableau de chaines
+      	//	informers_tags est un tableau de chaines
+      	//	photographers_tags est un tableau de chaines
+      	//	additives_n est un entier
+      	//	unknown_nutrients_tags est un tableau de chaines
+      	//	packaging_tags est un tableau de chaines
+      	//	countries_tags est un tableau de chaines
+      	//	ingredients_from_palm_oil_tags est un tableau de chaines
+      	//	brands_tags est un tableau de chaines
+      	//	emb_codes_tags est un tableau de chaines
+      	//	purchase_places est une chaine
+      	//	traces est une chaine
+      	//	countries_hierarchy est un tableau de chaines
+      	//	categories est une chaine
+      	ingredients_text est une chaine
+      	product_name est une chaine
+      	//	created_t est un entier
+      	//	creator est une chaine
+      	//	ingredients_from_or_that_may_be_from_palm_oil_n est un entier
+      	//	serving_size est une chaine
+      	//	last_modified_by est une chaine
+      	//	completed_t est un entier
+      	//	origins est une chaine
+      	//	stores est une chaine
+      	//	nutrition_grade_fr est une chaine
+      	//	stores_tags est un tableau de chaines
+      	//	id est une chaine
+      	//	countries est une chaine
+      	//	purchase_places_tags est un tableau de chaines
+      	//	interface_version_modified est une chaine
+      	//	sortkey est un entier
+      	//	last_modified_t est un entier
+      	//	correctors_tags est un tableau de chaines
+      	//	brands est une chaine
+      	//	ingredients_tags est un tableau de chaines
+      	//	status est une chaine
+      	//	packaging est une chaine
+      	//	serving_quantity est une chaine
+      	//	origins_tags est un tableau de chaines
+      	//	nutrition_data_per est une chaine
+      	//	labels est une chaine
+      	//	link est une chaine
+      	//	cities_tags est une chaine
+      	//	categories_tags est un tableau de chaines
+      	//	quantity est une chaine
+      	//	expiration_date est une chaine
+      	//	status_tags est un tableau de chaines
+      	//	ingredients_that_may_be_from_palm_oil_n est un entier
+      	//	ingredients_from_palm_oil_n est un entier
+      	image_url est une chaine
+      	//	ingredients est un tableau de STINGREDIENTS
+      	//	lc est une chaine
+      FIN
+      
+      STREPONSE est une structure
+      	status_verbose est une chaine
+      	status est un entier
+      	product est une STPRODUCT
+      	code est une chaine
+      FIN
+      
+      
+      gsListeIngredient est une chaine = fChargeTexte(FICHIER_INGREDIENTS)
+      si gsListeIngredient<>"" alors
+      	ChaîneVersTableau(gsListeIngredient,gtabAllergenes,rc)
+      fin
+      
+      gsNomProp est une chaîne
+      gsNouvelleValeur est une chaine
+      
+     type : 720896
+  procedures :
+   -
+     name : AppelWS_RechercheProduit
+     internal_properties : CAAAAAgAAACn8E1OH5IocS2HT/uhHGu39IeZnNxyG53LKdTpmaYCvEP7pnYSpFu68EUgBuNQYrTfa+XMwV+ApEmdQ3pTQtTQd++7KGFWGGwWvhsx9XLugDPtQxMo04Gvw3GSd+7m1fOAYGEfIEzpfocslaf0M8FzTf675OnJeOOTGJjPzfK3b1IFNjz4
+     procedure_id : 1498079026583003928
+     type_code : 15
+     code : |1+
+      PROCEDURE AppelWS_RechercheProduit(sID est une chaine)
+      
+      sUrl est une chaine = gsURLOFF+"/api/v0/produit/%1.json"
+      
+      sUrl = ChaîneConstruit(sUrl,SansEspace(sID))
+      stReponseTemp est un stReponse
+      bufImage est un buffer
+      tabIngédrients est un tableau de chaine
+      sTMPRes est une chaine
+      
+      
+      // Requête au WebService
+      SI PAS HTTPRequête(sUrl,"","","","",gsLoginServerOFF,gsPasswordServerOFF) ALORS
+      	ExécuteThreadPrincipal(CallbackWS,Vrai,"Impossible de contacter la base de données." + RC + "Vérifiez votre connexion à internet.")
+      SINON
+      	// Récupération du résultat
+      	buf est un buffer = HTTPDonneRésultat()
+      
+      	SI buf ~= "" ALORS
+      		ExécuteThreadPrincipal(CallbackWS,Vrai,"Impossible de contacter la base de données." + RC + "Vérifiez votre connexion à internet.")
+      	SINON
+      		// Désérialisation
+      		Désérialise(stReponseTemp,buf,psdJSON)
+      		
+      		// Produit inconnu : propose de l'ajouter
+      		si stReponseTemp.status = 0 ALORS
+      			ExécuteThreadPrincipal(CallbackProduitInconnu,sID)
+      		SINON
+      			SI stReponseTemp.product.image_url <> "" _ET_ HTTPRequête(stReponseTemp.product.image_url) ALORS
+      				bufImage = HTTPDonneRésultat()
+      			FIN
+      			// Ingrédients
+      			sTMPRes = stReponseTemp.product.ingredients_text
+      			// Retire les _ qui sont utilisés pour la mise en évidence des allergènes courants par OpenFoodFacts
+      			sTMPRes = remplace(sTMPRes,"_","")
+      			sTMPRes = remplace(sTMPRes,"(","")
+      			sTMPRes = remplace(sTMPRes,")","")
+      			
+      			sIngredient est une chaine
+      			pour TOUTE CHAINE sIngredient DE sTMPRes SEPAREE PAR ","
+      				sIngredient = SansEspace(sIngredient)
+      				
+      				// Si on n'a qu'un pourcentage, on le colle à l'ingrédient précédent (cas du 1,3% qui se retrouve coupé en deux)
+      				si droite(sIngredient,1)="%" _et_ EstNumérique(sIngredient[[ à taille(sIngredient)-1]]) ALORS
+      					tabIngédrients[TableauOccurrence(tabIngédrients)] += ","+sIngredient
+      				sinon
+      					TableauAjoute(tabIngédrients,SansEspace(sIngredient))
+      				FIN
+      				
+      			FIN
+      
+      			ExécuteThreadPrincipal(CallbackWS,Faux,"",stReponseTemp.product.product_name,bufImage,tabIngédrients)
+      		FIN
+      		
+      		
+      	FIN
+      FIN
+     type : 458752
+   -
+     name : AppelWSAjoutProduit
+     internal_properties : CAAAAAgAAAAe2Mp1k/DpTzc8udNlC4ItehlU2mnQG3BPiBJhQXIFJa3frggh4YWPFTGnzE1vzEE4tssZaw1VXHkl4xCEd57QMcCkAWiz+CULDo/87oxokBd7+uEvFOW6A1PG4obRhWU2V3+y6tH6wRzZL3QTSbzf80cVLgOUwFHbnESNMF3LJOajgFb2WrhrjyGA41k/lg+zkV3UcL2uKXawyXO1qAo+zqSAQRx/tarm0XhKrgpbCkG/pIqxFzqhVgSuET18H+v1rOJn4/mQf5+KPwhVJUkrrMx3ozKwmpj6wc+N67jSJUNu3Yq4
+     procedure_id : 1498079030878037166
+     type_code : 15
+     code : |1+
+      // Résumé : Appelle le Webservice de OpenFoodFacts pour ajouter un produit
+      // Syntaxe :
+      // AppelWSAjoutProduit ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      PROCEDURE AppelWSAjoutProduit()
+      
+      sCode est une chaine
+      sListeProp est une chaine
+      bufIMG est un buffer
+      
+      
+      pour toute ligne de FEN_Scan.TABLE_Propriétés
+      	sNomProp est une chaine = FEN_Scan.COL_NomProp
+      	si sNomProp[[1]]="+" alors sNomProp=sNomProp[[2 à]]
+      	si sNomProp="code" alors sCode=FEN_Scan.COL_Valeur
+      	
+      	sValeurEnCodée est une chaine ansi = FEN_Scan.COL_Valeur
+      	sValeurEnCodée = ChaineVersUTF8(sValeurEnCodée)
+      	sValeurEnCodée = URLEncode(sValeurEnCodée)
+      	sListeProp += ["&"]+sNomProp+"=" + sValeurEnCodée
+      FIN
+      
+      sUrl est une chaine = gsURLOFF + "/cgi/product_jqm2.pl?"+sListeProp
+      
+      // Requête au WebService
+      SI PAS HTTPRequête(sUrl,"","","","",COL_OpenFoodFacts.gsLoginServerOFF,COL_OpenFoodFacts.gsPasswordServerOFF) ALORS
+      	ExécuteThreadPrincipal(CallbackWSAjout,Vrai,"Impossible de contacter la base de données." + RC + "Vérifiez votre connexion à internet.")
+      SINON
+      	// Récupération du résultat
+      	buf est un buffer = HTTPDonneRésultat()
+      	SI buf ~= "" ALORS
+      		ExécuteThreadPrincipal(CallbackWSAjout,Vrai,"Impossible de contacter la base de données." + RC + "Vérifiez votre connexion à internet.")
+      	SINON
+      		
+      		Si fen_scan.gsPhotoAjout <> "" ALORS
+      			// Réussite : envoi de l'image
+      			sUrl = gsURLOFF + "/cgi/product_image_upload.pl"
+      			
+      			sContentType est une chaine = "multipart/form-data; boundary=---------------------------19482971420129"
+      			
+      			// Traitement de la photo
+      
+      <SI CibleExécution=Android>
+      	
+      	// Android ne tourne pas automatiquement les photos
+      	// Il faut les tourner à la main en fonction des données EXIF
+      	
+      	// Traitement des données exif et redimensionnement
+      	TraitePhotoJava(FEN_Scan.gsPhotoAjout,TAILLE_MAX_PHOTO)
+      	
+      	// Chargement du buffer
+      	bufIMG = fChargeBuffer(FEN_Scan.gsPhotoAjout)
+      	
+      <FIN>
+      
+      
+      <SI CibleExécution=iOS>
+      	
+      	// iOS tourne automatiquement la photo
+      	// Elle est utilisable directement
+      	iImage est une image = dChargeImage(fen_scan.gsPhotoAjout)
+      				
+      	// Redimensionnement		
+      	si pas iImage.valide ALORS
+      		ExécuteThreadPrincipal(CallbackWSAjout,Vrai,"Image invalide")
+      	FIN
+      	
+      	nLargeur est un entier = iImage..Largeur
+      	nHauteur  est un entier = iImage..Hauteur
+      	nLargeurNew, nHauteurNew sont des entiers
+      	
+      	SI nLargeur > TAILLE_MAX_PHOTO _OU_ nHauteur > TAILLE_MAX_PHOTO ALORS
+      		SI nLargeur > nHauteur ALORS
+      			nLargeurNew = TAILLE_MAX_PHOTO
+      			nHauteurNew = nHauteur * nLargeurNew / nLargeur
+      		SINON
+      			nHauteurNew = TAILLE_MAX_PHOTO
+      			nLargeurNew = nLargeur * nHauteurNew / nHauteur
+      		FIN
+      		
+      		dRedimensionne(iImage,nLargeurNew,nHauteurNew,drEtiré)
+      	FIN
+      	
+      	// Chargement du buffer
+      	bufIMG = iImage.image
+      	
+      <FIN>
+      
+      			
+      			si bufIMG ~= "" alors retour
+      			
+      			bufContenuPost est un buffer = UnicodeVersAnsi(ChaîneConstruit([
+      				-----------------------------19482971420129
+      				Content-Disposition: form-data; name="jqueryfileupload"
+      				
+      				1
+      				-----------------------------19482971420129
+      				Content-Disposition: form-data; name="imagefield"
+      				
+      				front
+      				-----------------------------19482971420129
+      				Content-Disposition: form-data; name="code"
+      				
+      				%1
+      				-----------------------------19482971420129
+      				Content-Disposition: form-data; name="imgupload_front"; filename="%1.jpg"
+      				Content-Type: image/jpeg
+      			]+RC+RC,sCode))+bufIMG+UnicodeVersAnsi(RC+"-----------------------------19482971420129--"+RC)
+      			
+      			SI PAS HTTPRequête(sUrl,"","",bufContenuPost,sContentType,COL_OpenFoodFacts.gsLoginServerOFF,COL_OpenFoodFacts.gsPasswordServerOFF) ALORS
+      				ExécuteThreadPrincipal(CallbackWSAjout,Vrai,"Impossible de contacter la base de données." + RC + "Vérifiez votre connexion à internet.")
+      			FIN
+      			
+      			buf = HTTPDonneRésultat()
+      		FIN
+      		
+      		
+      		ExécuteThreadPrincipal(CallbackWSAjout,faux,"")
+      	FIN
+      FIN
+      
+     type : 458752
+   -
+     name : CallbackWS
+     procedure_id : 1498080697328161330
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackWS (<bErreur> est booléen, <sErreur> est chaîne [, <sTitre> est chaîne [, <bufPhoto> est buffer [, <tabIngrédient> est tableau]]])
+      //
+      // Paramètres :
+      //	bErreur (booléen) : <indiquez ici le rôle de bErreur>
+      //	sErreur (chaîne UNICODE) : <indiquez ici le rôle de sErreur>
+      //	sTitre (chaîne UNICODE - valeur par défaut="") : <indiquez ici le rôle de sTitre>
+      //	bufPhoto (buffer - valeur par défaut="") : <indiquez ici le rôle de bufPhoto>
+      //	tabIngrédient (tableau - valeur par défaut=0) : <indiquez ici le rôle de tabIngrédient>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackWS(bErreur est un booléen, sErreur est une chaine,sTitre est une chaine = "", bufPhoto est un buffer="", tabIngrédient est un tableau de chaine = null)
+      
+      sAllergènes est une chaine
+      
+      si bErreur ALORS
+      	FEN_Scan..plan = 1
+      	Erreur(sErreur)
+      SINON
+      	// Traitement de la photo
+      	FEN_Scan.IMG_Photo = bufPhoto
+      	
+      	// Nom du produit
+      	FEN_Scan.LIB_NomProduit = sTitre
+      	
+      	// Affichage de ingrédients
+      	TableSupprimeTout(FEN_Scan.TABLE_Ingrédients)
+      	POUR TOUT sIngredient de tabIngrédient
+      		TableAjouteLigne(FEN_Scan.TABLE_Ingrédients,sIngredient)
+      		
+      		// Recherche d'allergène
+      		POUR TOUT sAllergene de COL_OpenFoodFacts.gtabAllergenes 
+      			SI Contient(sIngredient,sAllergene,SansCasse) _et_ pas contient(sAllergènes,sAllergene,SansCasse) ALORS
+      				sAllergènes += sAllergene + [RC]
+      			FIN
+      		FIN
+      	FIN
+      	
+      	// Affichage de la fiche si besoin
+      	FEN_Scan..Plan = 2
+      	
+      	Si sAllergènes <> "" ALORS
+      		// Le produit contient des allergies
+      		Info("Ce produit contient des allergènes :" + rc + RC + sAllergènes)
+      	FIN
+      	
+      FIN
+      
+     type : 458752
+   -
+     name : CallbackAjoutProduit
+     procedure_id : 1498080882011863375
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackAjoutProduit (<sCodeBarre> est chaîne)
+      //
+      // Paramètres :
+      //	sCodeBarre (chaîne UNICODE) : <indiquez ici le rôle de sCodeBarre>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackAjoutProduit( sCodeBarre est une chaine )
+      
+      // Bascule sur le plan pour ajouter un produit
+      FEN_Scan.LIB_Cliquez_ici_pour_prendre..Visible = vrai
+      FEN_Scan..Plan = 4
+      
+      FEN_Scan.LIB_AJOUT = ChaîneConstruit("Ajout du produit %1",sCodeBarre)
+      
+      TableSupprimeTout(FEN_Scan.TABLE_Propriétés)
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"code","Code-barres",sCodeBarre,"Code-barres du produit.")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"product_name","Nom du produit","","Nom du produit (Exemple : Kinler Buono White)")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"generic_name","Nom générique","","Dénomination générique (Exemple : Barre chocolatée au lait et aux noisettes)")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"quantity","Quantité","","Exemples : 2 l, 250 g, 1 kg, 25 cl")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"packaging","Conditionnement","","Type de conditionnement, format, matière... (Exemples : Frais, Conserve, Sous-vide, Surgelé, Bouteille, Bocal, Boîte, Verre, Plastique, Carton...)")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+brands","Marques","","Exemples : Kinler Buono White, Kinler Buono, Kinler, Farirro")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+categories","Catégories","","Il suffit d'indiquer la catégorie la plus spécifique, les catégories parentes seront ajoutées automatiquement. Exemples : Sardines à l'huile d'olive, Mayonnaises allégées, Jus d'orange à base de concentré")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+labels","Labels, certifications, récompenses","","Labels, certifications, récompenses.  Indiquez les labels les plus spécifiques. Les catégories parentes comme 'Bio' ou 'Commerce équitable' seront ajoutées automatiquement. Exemples : AB, Bio européen, Max Havelaar, Label Rouge, IGP, AOP, Saveur de l'Année 2012...")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"origins","Origine des ingrédients","","Exemples : Vallée des Baux-de-Provence, Provence, France")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+manufacturing_places","Lieu de fabrication","","Lieux de fabrication ou de transformation. Exemples : Provence, France")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+emb_codes","Code emballeur","","Code emballeur (EMB) ou embouteilleur.  En France, code commençant par EMB suivi de 5 chiffres (code INSEE de la commune) et éventuellement d'une lettre qui identifie l'entreprise qui a conditionné le produit. Dans d'autres pays d'Europe, code précédé de 'e'. Ou dans un ovale, 2 initiales du pays suivi d'un nombre et de CE. Pour le vin et l'alcool, code sur la capsule au dessus du bouchon. Exemples : EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522 ")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"link","Lien","","Lien vers la page du produit sur le site officiel du fabricant.")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"expiration_date","DLC/DLUO","","La date limite permet de repérer les changements des produits dans le temps et d'identifier la plus récente version.")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+purchase_places","Lieux d'achat","","Indiquez le lieu où vous avez acheté ou vu le produit (au moins le pays).")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+stores","Magasins","","Enseigne du magasin où vous avez acheté ou vu le produit.")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+countries","Pays de vente","","Pays dans lesquels le produit est largement distribué (hors magasins spécialisés dans l'import).")
+      TableAjouteLigne(FEN_Scan.TABLE_Propriétés,"+ingredients_text","Ingrédients","","Conserver l'ordre, indiquer le % lorsqu'il est précisé, séparer par une virgule ou - , Utiliser les ( ) pour les ingrédients d'un ingrédient, indiquer les allergènes entre _ : farine de _blé_. Exemple : Céréales 85,5% (farine de _blé_, farine de _blé_ complet 11%), extrait de malt (orge), cacao 4,8%, vitamine C")
+      
+      FEN_Scan.IMG_Produit = ""
+     type : 458752
+   -
+     name : CallbackMiseAJourProp
+     procedure_id : 1498080886306962290
+     type_code : 15
+     code : |1-
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackMiseAJourProp (<sNomProp>, <sValProp>)
+      //
+      // Paramètres :
+      //	sNomProp : <indiquez ici le rôle de sNomProp>
+      //	sValProp : <indiquez ici le rôle de sValProp>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackMiseAJourProp( sNomProp , sValProp )
+      
+      n est un entier = TableCherche(FEN_Scan.COL_NomProp,sNomProp)
+      si n>0 ALORS
+      	FEN_Scan.COL_Valeur[n] = sValProp
+      	TableAffiche(FEN_Scan.TABLE_Propriétés,taCourantBandeau)
+      FIN
+     type : 458752
+   -
+     name : CallbackWSAjout
+     procedure_id : 1498080886307093706
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackWSAjout (<bErreur> est booléen, <sErreur> est chaîne)
+      //
+      // Paramètres :
+      //	bErreur (booléen) : <indiquez ici le rôle de bErreur>
+      //	sErreur (chaîne UNICODE) : <indiquez ici le rôle de sErreur>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackWSAjout(bErreur est un booléen, sErreur est une chaine)
+      
+      FEN_Scan..Plan = 1
+      SI bErreur ALORS
+      	Erreur(sErreur)
+      SINON
+      	ToastAffiche("Produit ajouté dans la base Open Food Facts")
+      FIN
+      
+     type : 458752
+   -
+     name : CallbackProduitInconnu
+     procedure_id : 1498130995761840867
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackProduitInconnu (<sID>)
+      //
+      // Paramètres :
+      //	sID : <indiquez ici le rôle de sID>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackProduitInconnu(sID)
+      
+      SI OuiNon("Produit inconnu","Voulez-vous l'ajouter à la base Open Food Facts ?")=Oui ALORS
+      	FEN_Scan.gsCodeBarre = sID
+      	SI COL_OpenFoodFacts.gsUserName="" ALORS
+      		FEN_Scan..plan = 5
+      	SINON
+      		CallbackAjoutProduit(FEN_Scan.gsCodeBarre)
+      	FIN
+      SINON
+      	CallbackWS(Vrai,"Produit inconnu.")
+      FIN
+     type : 458752
+   -
+     name : AppelWSLogin
+     internal_properties : CAAAAAgAAACn8E1OH5IocS2HT/uhHGu39IeZnNxyG53LKdTpmaYCvEP7pnYSpFu68EUgBuNQYrTfa+XMwV+ApEmdQ3pTQtTQd++7KGFWGGwWvhsx9XLugDPtQxMo04Gvw3GSd+7m1fOAYGEfIEzpfocslaf0M8FzTf675OnJeOOTGJjPzfK3b1IFNjz4
+     procedure_id : 1498137923552977483
+     type_code : 15
+     code : |1+
+      PROCEDURE AppelWSLogin()
+      
+      sUrl est une chaine = ChaîneConstruit(COL_OpenFoodFacts.gsURLOFF+"/cgi/session.pl?user_id=%1&password=%2&remember_me=off&.submit=Sign-in",URLEncode(FEN_Scan.sai_utilisateur),urlencode(FEN_Scan.sai_mot_de_passe))
+      si HTTPRequête(sUrl,"","","","",COL_OpenFoodFacts.gsLoginServerOFF,COL_OpenFoodFacts.gsPasswordServerOFF)=faux ALORS
+      	ExécuteThreadPrincipal(CallbackWSIdentification,vrai,"Impossible de contacter le site OpenFoodFacts." + RC + "Vérifiez votre connexion à internet.")
+      sinon
+      	c est un CCookie
+      	c.AnalyseCookie(HTTPDonneRésultat(httpEntête))
+      	
+      	sCookie est une chaine = c.LireCookie("session")
+      	si sCookie~="" ALORS
+      		ExécuteThreadPrincipal(CallbackWSIdentification,Vrai,"Nom d'utilisateur ou mot de passe incorrect.")
+      	sinon
+      		ExécuteThreadPrincipal(CallbackWSIdentification,faux,"")
+      	FIN
+      FIN
+      
+     type : 458752
+   -
+     name : CallbackWSIdentification
+     procedure_id : 1498137979387630679
+     type_code : 15
+     code : |1+
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //CallbackWSIdentification (<bErreur> est booléen, <sErreur> est chaîne)
+      //
+      // Paramètres :
+      //	bErreur (booléen) : <indiquez ici le rôle de bErreur>
+      //	sErreur (chaîne UNICODE) : <indiquez ici le rôle de sErreur>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE CallbackWSIdentification(bErreur est un booléen, sErreur est une chaine)
+      
+      SI bErreur ALORS
+      	FEN_Scan..Plan = 5
+      	Erreur(sErreur)
+      SINON
+      	COL_OpenFoodFacts.gsUserName = FEN_Scan.SAI_Utilisateur
+      	COL_OpenFoodFacts.gsPassword = FEN_Scan.SAI_Mot_de_passe
+      	SauveParamètre(PARAM_USERNAME,COL_OpenFoodFacts.gsUserName)
+      	SauveParamètre(PARAM_PWD,COL_OpenFoodFacts.gsPassword)
+      	CallbackAjoutProduit(FEN_Scan.gsCodeBarre)
+      FIN
+      
+     type : 458752
+   -
+     name : URLEncodeAvancé
+     procedure_id : 1508028722049624071
+     type_code : 15
+     code : |1-
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //URLEncodeAvancé (<sChaine> est chaîne)
+      //
+      // Paramètres :
+      //	sChaine (chaîne UNICODE) : <indiquez ici le rôle de sChaine>
+      // Valeur de retour :
+      // 	Aucune
+      //
+      // Exemple :
+      // Indiquez ici un exemple d'utilisation.
+      //
+      PROCEDURE URLEncodeAvancé(sChaine est une chaine)
+      
+      sChaineEncodée est une chaîne
+      
+      sChaineEncodée = Remplace(sChaine," ","%20")
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x1fc50c5c166d74be
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ
